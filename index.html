@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>电动兄弟情报站</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="电动兄弟情报站首页">
+        <img class="brand-logo" src="./assets/ddbro-logo.jpg" alt="电动兄弟 DD BRO" />
+        <div>
+          <p class="eyebrow">DD BRO BRIEF</p>
+          <h1>电动兄弟情报站</h1>
+        </div>
+      </a>
+      <label class="search">
+        <span>搜索</span>
+        <input id="searchInput" type="search" placeholder="Tesla, OpenAI, NVIDIA, robot..." />
+      </label>
+      <button id="refreshButton" type="button" title="立即刷新新闻">
+        <span aria-hidden="true">↻</span>
+        刷新
+      </button>
+    </header>
+
+    <main>
+      <section class="module-tabs" id="moduleTabs" aria-label="资讯模块"></section>
+
+      <section class="grid-layout">
+        <section class="feed-column" aria-labelledby="feedTitle">
+          <section class="hero" aria-labelledby="briefTitle">
+            <div class="hero-copy">
+              <p id="todayLabel" class="date-label">正在加载</p>
+              <h2 id="briefTitle">海外汽车资讯</h2>
+              <p id="briefSummary">像逛社区一样看海外汽车、海外 AI 和海外具身智能。</p>
+            </div>
+            <div class="meta-panel" aria-label="更新状态">
+              <span>更新时间</span>
+              <strong id="updatedAt">--</strong>
+              <span>下次自动更新</span>
+              <strong id="nextRefresh">--</strong>
+            </div>
+          </section>
+
+          <section class="toolbar" aria-label="新闻筛选">
+            <div id="topicFilters" class="filters"></div>
+          </section>
+
+          <div class="section-heading">
+            <h2 id="feedTitle">新闻流</h2>
+            <span id="itemCount">0 条</span>
+          </div>
+          <div id="newsList" class="news-list"></div>
+          <p id="emptyState" class="empty" hidden>没有匹配的新闻。</p>
+        </section>
+
+        <aside class="highlights" aria-labelledby="highlightsTitle">
+          <div class="side-menu" aria-label="快捷入口">
+            <div class="side-link">
+              <span class="side-icon">海</span>
+              <div><strong>海外车间</strong><small>车企、电池、自动驾驶</small></div>
+            </div>
+            <div class="side-link">
+              <span class="side-icon">AI</span>
+              <div><strong>AI 观察</strong><small>模型、算力、应用</small></div>
+            </div>
+            <div class="side-link">
+              <span class="side-icon">机</span>
+              <div><strong>具身智能</strong><small>机器人、工厂、物流</small></div>
+            </div>
+          </div>
+          <h2 id="highlightsTitle">重点速览</h2>
+          <div id="highlightsList" class="highlight-list"></div>
+          <div class="side-actions">
+            <span>微博</span>
+            <span>微信</span>
+            <span>原文</span>
+            <span>电动兄弟App</span>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <button class="floating-action" type="button" title="刷新新闻" onclick="document.querySelector('#refreshButton')?.click()">+</button>
+
+    <footer>
+      新闻来自公开国际 RSS 聚合源；点击标题可查看原文。后续可接入稳定新闻 API 或自有采编源。
+    </footer>
+
+    <script src="./app.js?v=20260602-ddbro-intel" type="module"></script>
+  </body>
+</html>
