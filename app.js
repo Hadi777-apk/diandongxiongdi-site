@@ -807,10 +807,7 @@ function render() {
 }
 
 async function loadNews() {
-  let response = await fetch("/api/news", { cache: "no-store" });
-  if (!response.ok) {
-    response = await fetch("./data/news.json", { cache: "no-store" });
-  }
+  const response = await fetch("./data/news.json", { cache: "no-store" });
   if (!response.ok) throw new Error("新闻数据加载失败");
   state.data = await response.json();
   render();
@@ -818,15 +815,12 @@ async function loadNews() {
 
 async function refreshNews() {
   elements.refreshButton.disabled = true;
-  elements.refreshButton.lastChild.textContent = " 更新中";
+  elements.refreshButton.lastChild.textContent = " 载入中";
   try {
-    const response = await fetch("/api/news", { method: "POST" });
-    if (!response.ok) throw new Error("刷新失败");
-    state.data = await response.json();
-    render();
+    await loadNews();
   } finally {
     elements.refreshButton.disabled = false;
-    elements.refreshButton.lastChild.textContent = " 刷新";
+    elements.refreshButton.lastChild.textContent = " 重新载入";
   }
 }
 
@@ -838,5 +832,5 @@ elements.searchInput.addEventListener("input", (event) => {
 elements.refreshButton.addEventListener("click", refreshNews);
 
 loadNews().catch((error) => {
-  elements.newsList.innerHTML = `<p class="empty">${escapeHtml(error.message)}，请先运行 npm run refresh 或启动服务。</p>`;
+  elements.newsList.innerHTML = `<p class="empty">${escapeHtml(error.message)}，请稍后再试。</p>`;
 });

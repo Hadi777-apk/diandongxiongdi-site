@@ -19,9 +19,9 @@
         <span>搜索</span>
         <input id="searchInput" type="search" placeholder="Tesla, OpenAI, NVIDIA, robot..." />
       </label>
-      <button id="refreshButton" type="button" title="立即刷新新闻">
+      <button id="refreshButton" type="button" title="重新载入静态快照">
         <span aria-hidden="true">↻</span>
-        刷新
+        重新载入
       </button>
     </header>
 
@@ -39,7 +39,7 @@
             <div class="meta-panel" aria-label="更新状态">
               <span>更新时间</span>
               <strong id="updatedAt">--</strong>
-              <span>下次自动更新</span>
+              <span>静态快照</span>
               <strong id="nextRefresh">--</strong>
             </div>
           </section>
@@ -83,10 +83,10 @@
       </section>
     </main>
 
-    <button class="floating-action" type="button" title="刷新新闻" onclick="document.querySelector('#refreshButton')?.click()">+</button>
+    <button class="floating-action" type="button" title="重新载入静态快照" onclick="document.querySelector('#refreshButton')?.click()">+</button>
 
     <footer>
-      新闻来自公开国际 RSS 聚合源；点击标题可查看原文。后续可接入稳定新闻 API 或自有采编源。
+      新闻来自公开国际 RSS 聚合源；点击标题可查看原文。站点前台使用静态快照发布，更新失败时也不影响打开。
     </footer>
 
     <script src="./app.js?v=20260602-ddbro-intel" type="module"></script>
